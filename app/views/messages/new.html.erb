@@ -1,0 +1,21 @@
+<%= form_for @message do |f| %>
+  <%= f.label :to %>
+
+
+  <% Contact.all.each do |contact| %>
+  <tr>
+    <td><%= contact.name %></td>
+    <td><%= check_box_tag "contact_phone_numbers[]", contact.phone_number %></td>
+  </tr>
+  <% end %>
+
+  <%= f.label :from %>
+  <%= f.text_field :from %>
+
+  <%= f.label :body %>
+  <%= f.text_field :body %>
+
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "New Contact", new_contact_path %>
